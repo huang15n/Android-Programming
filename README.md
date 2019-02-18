@@ -1,6 +1,6 @@
 # Android-Programming
 
-#Introduction 
+## Introduction 
 
 For teaching you the value of hard work, for inspiring and encouraging me to pursue a career in computing 
 It was polished enough to be presentable and give us many invaluable suggestions and corrections, with such a talented and entertaining crew 
@@ -10,7 +10,7 @@ It helps to have a guide through unfamiliar territory
 
 
 
-#Prequisite 
+## Prequisite 
 When there are rough spots, or when some things are tricky or obscure, you will face them head on 
 If the concepts do not ring a bell, you will be in the weeds.
 We will provide some brief reminder about java specifics 
@@ -20,7 +20,7 @@ Going off the beaten path and finding your way will solidify your learning and g
 Typographical conventions for all widely used version . there is a small amount of market share on older versions .keep track of the latest one 
 
 
-#Convention
+## Convention
 
 There are two areas where our choices differ from what you might see elsewhere 
 1 We use anonymous inner classes for listeners. This is mostly a matter of opinion. We find it makes for cleaner code in the app because it puts the listener’s method implementation right where you want to see them 
@@ -38,19 +38,19 @@ The emulator is useful for testing apps. However, it is no substitute for an act
 
 
 
-##Part1 
-### 1 your first android app 
+### Part1 
+#### 1 your first android app 
 It is full of new concepts and moving parts required to build an app , the app tests the user;s knowledge of geography 
 
 
 
 
-####An activity is an instance of Activity, a class in the android SDK. An activity is responsible for managing user interaction with a screen of information 
+#### An activity is an instance of Activity, a class in the android SDK. An activity is responsible for managing user interaction with a screen of information 
 You write subclass of Activity to implement the functionality that your app requires. 
 A simple application may need only one subclass; a complex application can have many 
 
 
-####A layout defines a set of UI objects and their positions on the screen. A layout is made up of definition written in XML. Each definition is used to create an object that appears on screen. 
+#### A layout defines a set of UI objects and their positions on the screen. A layout is made up of definition written in XML. Each definition is used to create an object that appears on screen. 
 
 
 
