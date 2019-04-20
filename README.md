@@ -66,41 +66,41 @@ A string resource is a string that lives in a separate XML file called a strings
 ###### Although the default strings file is named strings.xml, you can name a strings file anything you want. You can also have multiple strings files in a project. As long as the file is located in res/values/, has a resources root element, and contains child string elements, your strings will be found and used.
 
 
-'<'?xml version="1.0" encoding="utf-8"?'>'
-'<'LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"'>'
+    tools:context=".MainActivity"&gt;
 
-    '<'TextView
+    &lt;TextView
        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="24dp"
         android:text="@string/app_name"
-        /'>'
+        /&gt;
 
-    '<'LinearLayout
+    &lt;LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"'>'
-        '<'Button
+        android:orientation="horizontal"&gt;
+        &lt;Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" 
-            android:text="@string/true_button"/'>'
-        '<'Button
+            android:text="@string/true_button"/&gt;
+        &lt;Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" 
-            android:text="@string/false_button"/'>'
+            android:text="@string/false_button"/&gt;
         
 
 
 
-    '<'/LinearLayout'>'
+    &lt;/LinearLayout&gt;
 
 
-'<'/LinearLayout'>'
+&lt;/LinearLayout&gt;
 
 
 When you created a project, a subclass of Activity was created for you. The class file for that activity is in the app/java directory of your project. The java directory is where the Java code for your project lives. reveal the contents of the app/java directory and then the contents of the com.bignerdranch.android.xxxx package. Open the XXXActivity.java file and take a look at its contents.
