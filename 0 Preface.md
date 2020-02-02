@@ -14,16 +14,6 @@ toward the end of the repository, we have added material on challanges
 this is not a reference repository. its goal is to get you over the initl bump to where you can get the most out of the recipe books available 
 as such, it is meant to be worked through from the beginning. 
 give your direct experience using them 
-
-# Prequisites 
-you need to be familiar with java, include classes and objects, interface, listeners, packages , inner classes, annoymous inner classes, and generic classes 
-if these concepts o not ring a bell, you will be in the weeds 
-start instead with an introducotry java, and return to this afterward 
-we will provide some brief reimders about java specifics like interface and annoymous inner classe 
-
-
-
-
 we are thankful that she was there to impose focus, precision, and clarity on our draft 
 thank you for sanding away the remaning rough edges of this repo 
 there is a feedback loop between me and them. 
@@ -41,6 +31,17 @@ as a practical matter, it is not possible to do this work without him. he always
 our confusion and simpleminded excitement may have caused us to restort to such techniques 
 
 
+# Prequisites 
+you need to be familiar with java, include classes and objects, interface, listeners, packages , inner classes, annoymous inner classes, and generic classes (please refer to 1 Java Review if you are a bit rusty with java and requiring a quick refresher!!!!!!)
+if these concepts does not ring a bell, you will be in the weeds 
+start instead with an introducotry java, and return to this afterward 
+we will provide some brief reimders about java specifics like interface and annoymous inner classe 
+
+
+
+
+
+
 # code style 
 there are two areas where our choices differ from what you might see whereelse in the comunity 
 #### disregard this if you are not familiar with Java 
@@ -48,7 +49,12 @@ there are two areas where our choices differ from what you might see whereelse i
 ### we use fragments for all user interface. fragments are not an absoluetly necessary tool, when used correctly, they are a valuable too in any toolkit. fragments have clear advanages over activities that make them worth the effort, inclduing flexibility in building and presenting your user intfaces 
 
 
-as of this writing, it is under active development and is frequently updated. 
+as of this writing, it is under active development and is frequently updated. it teaches android for all widely used versions. as android releases new versions, the techniques will continue to work thanks to backward compatibility support 
+
+
+# a hardware device 
+## the emulator is useful for testing apps. however, it is no substitute for an actual Android device measuring performance !!!!
+
 
 
 
