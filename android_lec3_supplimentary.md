@@ -1,7 +1,8 @@
 
 
 
-<h2>Model View Controller </h2>
+
+## Model View Controller 
 
 
 <em> sections are separated into three sections labeled Model, View, Controller. android apps are designed around an architecture called Model-View-Controller, or MVC for short, all objects in your app must be a model object, a view object, or a controller object</em>
@@ -19,7 +20,7 @@ a model object holds the app's data and business logic. model classes are typica
 <strong> controller objects tie the view and model objects together. they contain application logic. contrllers are desigend to respond to varius events triggerred by view objects and to manage the flow of data to and from model objects and the view layer, in android, a controller is typically a subclass of Activity, Fragment, or Service</strong>
 
 
-<h2> Benefits of MVC</h2>
+##  Benefits of MVC
 an app can accumulate features until it is too complciated to understand 
 
 separating code into classes helps you design and understand the app as a whole; you can think in terms of classes instead of individual variables and methods 
@@ -57,7 +58,7 @@ notice that you can use the escape sequence '\ toget an apostrophe in your strin
 
 
 
-<h2> Generating getters and setters </h2>
+##  Generating getters and setters 
 
 
 the first step is to configure android studio to recognize the m Prefix for member variables .

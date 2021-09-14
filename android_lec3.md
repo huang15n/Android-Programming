@@ -1,6 +1,6 @@
 
 
-<h1> GUI Widgets and Lists </h1>
+# GUI Widgets and Lists 
 
 
 
@@ -44,7 +44,7 @@ we will see a lot of apps using MapView
 
 
 
-<h2> Adding a widget </h2>
+##  Adding a widget 
 to put a widget you must do two things
 
 <ol>
@@ -72,7 +72,7 @@ you will have to create them on the fly. but in general, this is what we are gon
 
 
 
-<h2> Button </h2>
+##  Button 
 
 common attributes, you give a button it, pointed out there are multiple ways to talk to a widget, the code to understand that, it is also a concept called data binding or widget binding 
 
@@ -110,7 +110,7 @@ Button b = (Button)findViewById(R.id.id);
 
 
 
-<h2>TextView</h2>
+## TextView
 <table>
 
 
@@ -149,7 +149,7 @@ it all gets jumbled up in here, this is not the point to remember all these diff
 
 
 
-<h2>ScrollView</h2>
+## ScrollView
 if you want a set of text in it you want it to be taller than the screen or maybe it has more text that it can fit in its area there is a widget called scroll view 
 
 it is a bit counter intuitive because you might have thought 
@@ -196,7 +196,7 @@ in scrollview you will have to add a lot of different properties to it
 
 
 
-<h2>EditTExt</h2>
+## EditTExt
 
 <em> in the design mode, it does not say EditText, it only says PlainText, that is what you want 
 
@@ -302,10 +302,10 @@ String text = et.text.toString();
 
 
 ```
-<p>
+
 you can set the textbox to have max number of lines.  you will detect that with your keyboard listener. there is a lot variations based on what keys to the keyboard 
 
-</p>
+
 
 
 
@@ -357,7 +357,7 @@ iv.setImageResource(R.drawable.filename);
 
 
 <h3> ImageButton</h3>
-<p> a clickable widget with an image label</p>
+ a clickable widget with an image label
 <table>
 
 <tr> 
@@ -392,7 +392,7 @@ iv.setImageResource(R.drawable.filename);
 </ul>
 
 
-<p>when you use the app, it sort of bundles up all the necessary files inside the app and so you do not have to worry about copying over these files. move other widgets out of the way and just here in the middle to set up a way to look at these  </p>
+when you use the app, it sort of bundles up all the necessary files inside the app and so you do not have to worry about copying over these files. move other widgets out of the way and just here in the middle to set up a way to look at these  
 
 <i> the moment when you drop it, it shows what image you want to display. you will have to them with alphabets!!!!! so it just pops up, you can lay out by attaching it to the other things on the screen </i>
 
@@ -422,14 +422,14 @@ iv.setImageResource(R.drawable.filename);
 <strong> baiscally just means you have got to give your files unique name prefixes for it to work properly</strong>
 <i> there are some wired part of android where they changed the names of some of the properties, so they will be more compatible with different versions of android or whatever. when you refer to something in android with @ type and then alsh and then a name so like this identifier here is you are saying i want to refer to one of my drawable images whose name is xxx. we made this images in natural size </i>
 
-<p> If I set the width of the size of these images wrap parents and I go back to the editor, you can change how you want that to look. if I would like to allow this app to pick different turtles there is a lot of different ways you could do that now, 1 you can type a name  2 what are the other ways you can do that? do not give them options, pick one from them you won'get get overwhelmed, give you a constrainted, we should make it clear and represent them, we should not make them type</p>
+ If I set the width of the size of these images wrap parents and I go back to the editor, you can change how you want that to look. if I would like to allow this app to pick different turtles there is a lot of different ways you could do that now, 1 you can type a name  2 what are the other ways you can do that? do not give them options, pick one from them you won'get get overwhelmed, give you a constrainted, we should make it clear and represent them, we should not make them type
 
 
 
 
 
 <h3> CheckBox</h3>
-<p>an individual toggleable boolean on/off checkbox</p>
+an individual toggleable boolean on/off checkbox
 <table>
 
 <tr> 
@@ -484,7 +484,7 @@ cb.performClick();
 
 
 <h3> Switch</h3>
-<p>an individual toggleable boolean on/off swtich</p>
+an individual toggleable boolean on/off swtich
 <table>
 
 <tr> 
@@ -544,7 +544,7 @@ if(sw.checked){
 
 
 <h3> RadioButton</h3>
-<p>a toggleable on/off switch; part of a group</p>
+a toggleable on/off switch; part of a group
 <table>
 
 <tr> 
@@ -653,7 +653,7 @@ if(sw.checked){
 
 
 
-<p> you dock to him, it will not make the buttons to be mutually exclusive to each other, you can imagine the user interface where you have multiple different groups of radio buttons </p>
+ you dock to him, it will not make the buttons to be mutually exclusive to each other, you can imagine the user interface where you have multiple different groups of radio buttons 
 
 
 <strong> you can drag and drop radio group, it is not really a widget, it is more of a container , you drag and drop radio buttons on the group</strong>
@@ -725,11 +725,11 @@ if(sw.checked){
 
 ```
 
-<p> you know how to like indenting them to indicate that they are inside a group there, only one of these should be clickable at a time </p>
+ you know how to like indenting them to indicate that they are inside a group there, only one of these should be clickable at a time 
 <strong> if you want it to scroll vertical, choose orientation, the radio does not a visual apperance to it </strong>
 
 
-<p> let's write a listener in the code, I will show you a style here yo ucan set the same onCLick for all four functions , I want to refer to which one is clicked on  </p>
+ let's write a listener in the code, I will show you a style here yo ucan set the same onCLick for all four functions , I want to refer to which one is clicked on  
 
 <strong> basically I guess it does just based on  </strong>
 
@@ -752,7 +752,7 @@ public void radioButtonClicked(View view){
 
 ```
 
-<p> if you want to set images to be displayed on the screen, you can do that , you would set the src for it.  the value you pass it here is the id here</p>
+ if you want to set images to be displayed on the screen, you can do that , you would set the src for it.  the value you pass it here is the id here
 
 
 ```java 
@@ -807,10 +807,10 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 
-<p> the xml is like the initial declared state of the app when it first loads up, but then all that state is subject to change, it loads up the xml and uses it in java ,all that is subject to change on the screen , they are up there now . maybe I misclicked something</p>
+ the xml is like the initial declared state of the app when it first loads up, but then all that state is subject to change, it loads up the xml and uses it in java ,all that is subject to change on the screen , they are up there now . maybe I misclicked something
 
 
-<p> I am kinda going out of my way not to teach you every little feature of java, somtimes the editor tries to hint to you maybe there is a better way of writing the same statement. if all the branches are checking the same variabels value like that, you can use switch  , it is the shorthand of saying the same thing . click the buble thing on android studio. it tries to remove the redundancy you know , it is dependent on what view I got clicked , editor is underlining your code  </p>
+ I am kinda going out of my way not to teach you every little feature of java, somtimes the editor tries to hint to you maybe there is a better way of writing the same statement. if all the branches are checking the same variabels value like that, you can use switch  , it is the shorthand of saying the same thing . click the buble thing on android studio. it tries to remove the redundancy you know , it is dependent on what view I got clicked , editor is underlining your code  
 
 
 ```java 
@@ -841,9 +841,9 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 
-<h2> convering resources id </h2>
+##  convering resources id 
 
-<p> if you have a resource name and want its ID : this.getResources().getIdentifier("nameOfDrawable", "drawable", this.getPackageName())</p>
+ if you have a resource name and want its ID : this.getResources().getIdentifier("nameOfDrawable", "drawable", this.getPackageName())
 
 
 
@@ -878,22 +878,22 @@ public class MainActivity extends AppCompatActivity {
 
 </table>
 
-<p>
-1 to set up an image resource: put image file in project folder app/src/main/res/drawable use app/src/main/res/drawable-xxhdip if image is very large </p>
-<p> use @drawable /foo to refer to foo.png</p>
-<p> use simple fine names with only letters and numbers</p>
+
+1 to set up an image resource: put image file in project folder app/src/main/res/drawable use app/src/main/res/drawable-xxhdip if image is very large 
+ use @drawable /foo to refer to foo.png
+ use simple fine names with only letters and numbers
 
 <i> if you switch to image view and you tap on the image, it won't do anything. that is useful if want to make know more.. </i>
 
 
 
 
-<h2> ListView</h2>
+##  ListView
 
 
 <i> a visible vertical meanu of selectable choices</i>
 
-<p> lists are more complicated , we separate it out</p>
+ lists are more complicated , we separate it out
 
 <h3> ListView</h3> 
 <em> an ordered collection of selectable choices </em>
@@ -918,7 +918,7 @@ public class MainActivity extends AppCompatActivity {
 
 </table>
 
-<p> if you want to set the list , the people who made android development they hate you and so that, you have <strong> set this thing called entries</strong>  </p>
+ if you want to set the list , the people who made android development they hate you and so that, you have <strong> set this thing called entries</strong>  
 
 <h3> Static list</h3>
 
@@ -930,7 +930,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-<h2>String resources</h2>
+## String resources
 
 
 <strong> declare contant strings and arrays in res/values/string.xml : </strong>
@@ -957,12 +957,12 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 
-<p>refer to them in java code: as a resource ID: R.string.name, R.array.name</p>
+refer to them in java code: as a resource ID: R.string.name, R.array.name
 
-<p> as a string or array: resources.getString(R.string.name), resources.getStringArray(R.array.name)</p>
+ as a string or array: resources.getString(R.string.name), resources.getStringArray(R.array.name)
 
 
-<p> this is really janky </p>
+ this is really janky 
 
 <ol> 
 <li> as a resource ID. R.string.name, R.array.name</li>
@@ -999,23 +999,23 @@ public class MainActivity extends AppCompatActivity {
 
 ```
 
-<p> that will update itself to show that, it is a bit dumb , another good thing about list is you can interact with it. there is a view called recyclerview that some apps want to use , there is a ton of these in the wild like most apps that shows lists of stuff are using this, this is crappier, come out and look up,  this constantly fools me . you are paying attention you have learned some stuff about android already, </p>
+ that will update itself to show that, it is a bit dumb , another good thing about list is you can interact with it. there is a view called recyclerview that some apps want to use , there is a ton of these in the wild like most apps that shows lists of stuff are using this, this is crappier, come out and look up,  this constantly fools me . you are paying attention you have learned some stuff about android already, 
 
 
 <h3> list adapter </h3>
 
 <strong> adapter:helps turn list data into lsit view items</strong>
-<p>common adapters:
+common adapters:
 1 ArrayAdapter: items come from an array or list 
-2 CursorAdapter: items come from a database query</p>
+2 CursorAdapter: items come from a database query
 
-<p> syntax for creating an adapter 
+ syntax for creating an adapter 
 
 <i> ArrayAdapter name = ArrayAdapter<String>(activity,layout,array); </i>
 
 
 
-</p>
+
 
 <ul>
 
@@ -1027,11 +1027,11 @@ public class MainActivity extends AppCompatActivity {
  
 </ul>
 
-<p> attach it by setting adapter properly of ListView</p>
+ attach it by setting adapter properly of ListView
 
 
 
-<h2> handling list events </h2>
+##  handling list events 
 
 
 <ol>
@@ -1059,8 +1059,8 @@ button.setOnClickListener(new View.OnClickListener() {
 
 ```
 
-<p> in java code, when the list is created, we refer to that list . I am writing a function, that function will notify that is the function I want to run. this anoymous function takes four parameteres . java is cynical 
-</p>
+ in java code, when the list is created, we refer to that list . I am writing a function, that function will notify that is the function I want to run. this anoymous function takes four parameteres . java is cynical 
+
 
 ```java 
 
@@ -1184,7 +1184,7 @@ spin.setOnItemSelectedListener{
 
 ```
 
-<p> a lot of times you do not want to eat up a lot fo screen sapce so you can make it dropdown list </p>
+ a lot of times you do not want to eat up a lot fo screen sapce so you can make it dropdown list 
 
 ```xml
 
@@ -1202,4 +1202,4 @@ spin.setOnItemSelectedListener{
 
 ```
 
-<p> come up on sessions, it is a temporary holding spot </p>
+ come up on sessions, it is a temporary holding spot 
