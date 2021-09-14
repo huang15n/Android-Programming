@@ -1,4 +1,4 @@
-<h1> Preface</h1>
+# Preface
 
 
 My initial instinct and the whole spectrum is that programs are governed by the code. 
@@ -11,6 +11,12 @@ we will face a steep learning curve, get our head around requires new ideas and 
 This approach officially and frankly allows you to put what you have learned into pratcie in a working app right away rather than leanring a lot of theory and then having to figure out how to apply it all. 
 
 if your java is a bit rusty, we will provide brief reminders about Java specifics. Skipping around is unproductive. You will have tenuous relationship with Android. As a result, extensions beyond the point will not generally be granted 
+
+
+official support for Kotlin for android development was an underground movement of developers even though it was not officially supported. It has become widely adopted 
+
+the tide has continued to turn toward it in a very big way. The framework team has started adding @nullable annotation to legacy platform code. Its goal is to get you over the initial hump to where you can get the most out of the reference and recipe books available. You work through these materials, benefit from the right environment - a dedicated comfortable board and a group of motivated peers 
+
 
 
 note: in Kotlin, everything is an object 
@@ -70,74 +76,68 @@ public int foo(String text){
 ```
 
 
-<h1> What is Android</h1>
-
-<ul>
-<li>android is mobile OS maintaind by Google 
-originally purchased from Android in 2005. Technically speaking, android is the number 1 operating system in terms of the number device running on</li>
-<li>runs on phones, tablets, watches, TVs, based on Kotli/ Java(Language) and Linux(Kernel), it is really a contrast to other operating system software 
-</li>
-<li> code is released as open source periodically, easier to customize, license , priate than IOS</li>
-</ul>
+ ## What is Android
 
 
+android is mobile OS maintaind by Google 
+originally purchased from Android in 2005. Technically speaking, android is the number 1 operating system in terms of the number device running on
+runs on phones, tablets, watches, TVs, based on Kotli/ Java(Language) and Linux(Kernel), it is really a contrast to other operating system software 
 
-<h1> Why Android? </h1>
+code is released as open source periodically, easier to customize, license , priate than IOS
 
-<ul>
-<li>
+
+
+## Why Android? 
+
+
+
 as a software developer, you should really learn how to write real apps for a real platform 
 better, snapper UI with a more consistent user exprience 
 able to use different kinds of widgets/controls than in a web page 
 more direct access to the device hardware(camera,GPS)
-users prefers apps over mobile web browsing </li>
+users prefers apps over mobile web browsing 
 
-<li>
+
 android has a lower barrier to install apps as opposed to apple, and they carefullly look over all of it, ripping you and verify its quality checking, that appeals to you.
-</li>
 
-</ul>
+ 
 
 
-<h1> Android architecture 
-</h1>
-<ul>
-<li>
-android os provides libraries for many sysytem features like contacts, phone dialing, notifcations, 2D/3d graphics, databse access, security / encryption, camera, audio, input/output </li>
-<li> Android code is compild into a special Dalvik binary format</li>
+ ## Android architecture 
 
-<li> checking android version Settings -> System -> About Device -> Android version</li> 
 
-<li> 
+
+android os provides libraries for many sysytem features like contacts, phone dialing, notifcations, 2D/3d graphics, databse access, security / encryption, camera, audio, input/output 
+Android code is compild into a special Dalvik binary format
+
+checking android version Settings -> System -> About Device -> Android version 
+
+
 Several comanies affect whether your device is up-to-date. Google, phone manufacturer, service provider. It requires for horsepower , they do not bother to pack it up. Some of them have backward compatiblity. It is possible to root your phone and hack into it. It is like free of the restraints  
-</li>
 
-</ul>
-
-
-<h1> Android Studio </h1>
+ 
+## Android Studio 
 it is basically an enhacned version of IntelliJ IDEA editor, free to down and use. Eclipse is an alternate. It is a decent fraction of you will run into this trouble. Install a minimal tool set from the command line and then build your app. It is a bit bulky other than that it is featureful 
 
-<ol>
-<li> Install JDK</li>
-<li> Install Android Studio</li>
-<li> Create a Vritual Device</li>
-</ol>
+
+Install JDK
+Install Android Studio
+Create a Vritual Device
 
 
 
-<h1>
-Project Structure
- </h1>
+
+## Project Structure
+ 
 
 
- <ul>
- <li> AndroidManifest.xml: 
-overall project config and settings </li>
+ 
+ AndroidManifest.xml: 
+overall project config and settings 
 
-<li> src/ ... 
-source code for your java classes </li>
-<li>res/.. resource files many are xml 
+src/ ... 
+source code for your java classes 
+res/.. resource files many are xml 
 
 drawable = images 
 layout = descriptions of GUI layout 
@@ -145,13 +145,13 @@ strings = localizationdata
 styles = general appearance styling 
 
 
-</li>
 
-<li>gradle 
+
+gradle 
 a build/ compile management system 
-buil.gradle = main build config file  </li>
+buil.gradle = main build config file  
 
-<h1> Virtual Devices AVDs </h1>
+ Virtual Devices AVDs 
 
 emulator / software simulations of an android device 
 when you click run in android studio, it builds your app, installs it on the virtual device 
@@ -161,34 +161,48 @@ con: need device plugged into dev PC. We will not do fancy schmancy and we have 
 
 
 
-<h1> First Android App </h1>
-
-<ol>
-<li> click Start A new Android Studio Project</li>
-<li> Check the support box </li>
-<li> click Next through most of the menus 
-</li>
+## First Android App 
 
 
-<li> choose empty activity instead of Basic Activity 
-acitivity is basically a screen of UI in an android app, it takes longer to load things up </li>
-</ol>
+click Start A new Android Studio Project
+Check the support box 
+click Next through most of the menus 
 
 
 
-
-<h1> Android Terminology</h1>
-<ul>
-<li> activity: a single screen of UI in app, the fundamental unit of a GUI </li>
+choose empty activity instead of Basic Activity 
+acitivity is basically a screen of UI in an android app, it takes longer to load things up 
 
 
-<li>view:visible onscreen item, widget: GUI control such as a button
-layout:invisible container to position/size widgets</li>
 
-<li>event: action that occurs when user interacts with widgets, clicks , typing, scrolling</li>
-<li>action bar: top menu of communications </li>
-<li>notification area: top system menu</li>
-</ul>
+
+
+##  App Basics & Android Terminology
+
+#### activity: a single screen of UI in app, the fundamental unit of a GUI 
+an activity is an instance of Acitivity, a class in the android SDK. an activity is responsible for managing user interaction with a screen of information
+
+you write subclasses of Activity to implement the functionality that your app requires. a simple app may need only one subclass; a complex app can have many
+
+#### a layout defines a set of UI objects and the object's positions on the screen. a layout is made up of definitions written XML. each defintion is used to create an object that appears onscreen
+
+
+
+
+#### view:visible onscreen item, widget: GUI control such as a button
+layout:invisible container to position/size widgets
+
+#### event: action that occurs when user interacts with widgets, clicks , typing, scrolling
+action bar: top menu of communications 
+notification area: top system menu
+
+
+
+android studio updates regularly, so wizard may look slightly different from what we are showing you 
+
+the lefthand view is the project tool window. we can view and manage the files associated with your project 
+you can toggle the visibility of the various tool windows by clicking on their names in the strips of tools 
+
 
 these are interchangeable terms in android, how to position things, all sorts of events 
 
@@ -212,7 +226,7 @@ WebView
 
 
 
-<h1> Doodling / Desigining a UI </h1>
+## Doodling / Desigining a UI 
 
 
 open xml file for your layout 
@@ -232,24 +246,23 @@ we linked to each other, like attach corners to corners of things. Need the anch
 
 
 
-<h1> Events </h1>
+## Events 
 
-event: an external stimulus your program can respond to . mouse motion/ tapping. keys pressed 
+#### event: an external stimulus your program can respond to . mouse motion/ tapping. keys pressed 
 timer expiring, ntework data available 
 
 
 
-event driven programming : overall execution of your program is largely dicated by user events. GUIs 
+#### event driven programming : overall execution of your program is largely dicated by user events. GUIs 
 to respond to events, you must 
 write methods to handle each kind of devent listener methods 
 attach those methods to particular GUI widgets 
-
 that consititues the code of your app 
 
 
 
 
-<h1> Setting an event listener </h1>
+## Setting an event listener 
 write a function in your java class accepts View parameters 
 go to xml layout and select widget in Design view 
 scroll down its attribtues until you find onClick 
@@ -267,15 +280,15 @@ hover over the View annd import the View class
 we want a way to randomly choose numbers on it
 
 
-<h1> Interacting with widgets </h1>
-<ol>
-<li>1 in Design VIew, give that view a unique ID property value </li>
+## Interacting with widgets 
 
-<li>2 In java code, call findViewById(_type_) tp acces ots voew pnkect . pass ot a [ra,eter pf R.id.your_unique_ID </li>
+1. in Design View, give that view a unique ID property value 
+
+2. In java code, call findViewById(_type_) to access R.id.your_unique_ID 
 Note: to convert between various data types in Java 
 
 
-</ol>
+
 
 ```xml 
 <?xml version="1.0" encoding="utf-8"?>
@@ -519,6 +532,14 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 
+## Anexe: Code Style 
+
+
+use anonymous inner class for listeners for cleaner code. It puts the listener's implementaiton right where you want to see them. In high performance contexts, they may cause problems, but for most circumstances they work fine 
+
+fragements for all user interfaces, feel strong about. Challenge that pratice write activity based code. Fragments have clear advantages over activties that make them worth the effort, including flexibility in building and present user interfaces  
+
+write apps to be compatible with deliciously-named versions. We intentionally take you through the difficulties involved that are backwards-compatible with them  
 
 
 
@@ -527,59 +548,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2> Anexe: Code Style </h2>
-
-<ol>
-<li> use anonymous inner class for listeners for cleaner code. It puts the listener's implementaiton right where you want to see them. In high performance contexts, they may cause problems, but for most circumstances they work fine </li>
-
-<li> fragements for all user interfaces, feel strong about. Challenge that pratice write activity based code. Fragments have clear advantages over activties that make them worth the effort, including flexibility in building and present user interfaces  </li>
-
-<li> write apps to be compatible with deliciously-named versions. We intentionally take you through the difficulties involved that are backwards-compatible with them  
-
-</li>
-
-
-
-
-
-</ol>
 
 
 

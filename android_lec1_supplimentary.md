@@ -1,14 +1,6 @@
 
 
 
-official support for Kotlin for android development was an underground movement of developers even though it was not officially supported. It has become widely adopted 
-
-the tide has continued to turn toward it in a very big way. The framework team has started adding @nullable annotation to legacy platform code 
-
-
-
-Its goal is to get you over the initial hump to where you can get the most out of the reference and recipe books available. You work through these materials, benefit from the right environment - a dedicated comfortable board and a group of motivated peers 
-
 
 
 
