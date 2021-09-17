@@ -291,7 +291,7 @@ Widgets can be added to a ViewGroup , which will then manage that widget's posit
 
 
 
-## XML, in breift 
+## XML, in brief
 XML: a language for describing hierarchical text data. a data markup language
 <ol>
 uses tags that consists of elements and attributes. tags can be nested
@@ -307,7 +307,7 @@ uses tags that consists of elements and attributes. tags can be nested
 
 
 
-## changing layout
+## Changing Layout
 go to the Text view for your layout xml file 
 change open/close tags to new layout type. LinearLayout 
 now go back to Design view and add widgets 
