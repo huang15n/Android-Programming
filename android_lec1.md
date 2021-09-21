@@ -543,6 +543,186 @@ write apps to be compatible with deliciously-named versions. We intentionally ta
 
 
 
+## Toast 
+toast: a pop-up message that appears for a short time. 
+it pops up and fade away 
+useful for display short updates in response to events 
+it is a big mumbo jumbo you have to do it 
+should not be relied upon extensively for important info 
+length can be Toast LENGTH_LONG 
+
+```java
+toast.makeText(this, "text", Toast.LENGTH_SHORT).show() ;
+```
+
+
+why is there a (View view) parameter, the short answer is android requires every onclick event handler pass the widget that you clicked on. We are fitting into the framework 
+the unified handler function 
+
+```xml 
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <Button
+        android:id="@+id/rightButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="308dp"
+        android:onClick="eitherButtonClicked"
+        android:text="@string/button_number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/leftButton" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/number_guess_game"
+        android:textSize="30sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.149" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:fontFamily="sans-serif-black"
+
+        android:text="@string/please_click_the_button_if_you_find_it_idea_for_larger_number"
+        app:layout_constraintBottom_toTopOf="@+id/rightButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/leftButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="308dp"
+        android:onClick="eitherButtonClicked"
+        android:text="@string/button_number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/point"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Points:0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/leftButton"
+        app:layout_constraintVertical_bias="0.508" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+```
+
+
+
+```java
+package com.example.numberquizapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Random;
+
+public class MainActivity extends AppCompatActivity {
+    private Button leftButton;
+    private Button rightButton;
+    private TextView pointText;
+    private Random rand;
+    private int point;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        leftButton = (Button) findViewById(R.id.leftButton);
+        rightButton = (Button) findViewById(R.id.rightButton);
+        pointText = (TextView) findViewById(R.id.point);
+        point = 0;
+        rand = new Random();
+        generateRandomNumber();
+    }
+
+
+
+
+
+
+    public void eitherButtonClicked(View view){
+        int leftValue = Integer.parseInt((String) leftButton.getText());
+        int rightValue = Integer.parseInt((String) rightButton.getText());
+        if(view == leftButton){
+            if(leftValue > rightValue){
+                point ++;
+                Toast.makeText(getApplicationContext(),"you rock!!!!", Toast.LENGTH_SHORT).show();
+            }else{
+                point --;
+                Toast.makeText(getApplicationContext(),"suck it" , Toast.LENGTH_SHORT).show();
+            }
+
+
+        }
+
+        if(view == rightButton) {
+            if (rightValue > leftValue) {
+                point++;
+                Toast.makeText(getApplicationContext(), "you rock!!!!", Toast.LENGTH_SHORT).show();
+            } else {
+                point--;
+                Toast.makeText(getApplicationContext(), "suck it", Toast.LENGTH_SHORT).show();
+            }
+        }
+        pointText.setText("Points:" + point);
+        generateRandomNumber();
+
+    }
+
+    public void generateRandomNumber(){
+
+
+        leftButton.setText(Integer.toString(rand.nextInt(100)));
+        rightButton.setText(Integer.toString(rand.nextInt(100)));
+
+    }
+}
+
+```
+
+the new version of android make the id to be magical name appear for you 
+
+
+
 
 
 

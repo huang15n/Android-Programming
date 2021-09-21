@@ -196,7 +196,7 @@ in scrollview you will have to add a lot of different properties to it
 
 
 
-## EditTExt
+## EditText
 
 <em> in the design mode, it does not say EditText, it only says PlainText, that is what you want 
 

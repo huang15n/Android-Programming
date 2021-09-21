@@ -1,6 +1,6 @@
 
 
-
+# Android Widget Layout 
 
 
 
@@ -8,7 +8,81 @@
 the definite answer is this will suit most people, work on exercises. show of hands. run into issues along the way. Know that off the top of your head and work in pairs 
 
 
-# Review 
+
+
+## CheatSheet 
+```xml
+
+<LinearLayout>
+</LinearLayout >
+
+<!-- usually with orientaiton nested layout-->
+
+```
+
+
+```xml
+
+android:layout_width = "match_parent"
+android:layout_height = "match_parent"
+
+```
+
+```xml
+
+android:oriental = "vertical"
+android:oriental = "horizontal"
+```
+
+```xml
+
+android:gravity = "center"
+android:gravity = "left"
+```
+
+
+```xml
+
+android:layout_weight = "1"
+
+```
+
+
+```xml
+
+android:padding = "1sp"
+android:layout = "1sp"
+<!-- padding is inside the border ->
+<!-- margin is outside the border ->
+
+```
+
+```xml
+<GridLayout 
+android:rowCount = "2"
+android:columnCount = "2">
+</GridLayout>
+
+
+<!--GridLayout Specific-->
+
+android:rowCount = ""
+android:columnCount = ""
+layout_columnSpan = ""
+layout_gravity = ""
+layout_paddingTop = ""
+```
+```xml
+<ConstraintLayout>
+</ConstraintLayout>
+```
+
+
+if you are describing an aspect of yourself, usually you do not have the prefix layout but if you are giving an instruction outside of you, you do have that prefix 
+
+
+
+## Review 
 the whole screen is called activity 
 
 the UI elements are called widgets or called views. positioning or sizing things 
@@ -25,186 +99,6 @@ this refers to this view and then immediately set dot something. I mushed it tog
 
 
 something out of our code called onCreate to create it so we cannot make it private. Somehow wiring things together between layout and the wedget doodled on the screen mostly working 
-
-
-## Toast 
-toast: a pop-up message that appears for a short time. 
-it pops up and fade away 
-useful for display short updates in response to events 
-it is a big mumbo jumbo you have to do it 
-should not be relied upon extensively for important info 
-length can be Toast LENGTH_LONG 
-
-```java
-toast.makeText(this, "text", Toast.LENGTH_SHORT).show() ;
-```
-
-
-why is there a (View view) parameter, the short answer is android requires every onclick event handler pass the widget that you clicked on. We are fitting into the framework 
-the unified handler function 
-
-```xml 
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-
-    <Button
-        android:id="@+id/rightButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:layout_marginBottom="308dp"
-        android:onClick="eitherButtonClicked"
-        android:text="@string/button_number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/leftButton" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:fontFamily="sans-serif-black"
-        android:text="@string/number_guess_game"
-        android:textSize="30sp"
-        app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.149" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:fontFamily="sans-serif-black"
-
-        android:text="@string/please_click_the_button_if_you_find_it_idea_for_larger_number"
-        app:layout_constraintBottom_toTopOf="@+id/rightButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/leftButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginBottom="308dp"
-        android:onClick="eitherButtonClicked"
-        android:text="@string/button_number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/point"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Points:0"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/leftButton"
-        app:layout_constraintVertical_bias="0.508" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
-
-```
-
-
-
-```java
-package com.example.numberquizapp;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import java.util.Random;
-
-public class MainActivity extends AppCompatActivity {
-    private Button leftButton;
-    private Button rightButton;
-    private TextView pointText;
-    private Random rand;
-    private int point;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        leftButton = (Button) findViewById(R.id.leftButton);
-        rightButton = (Button) findViewById(R.id.rightButton);
-        pointText = (TextView) findViewById(R.id.point);
-        point = 0;
-        rand = new Random();
-        generateRandomNumber();
-    }
-
-
-
-
-
-
-    public void eitherButtonClicked(View view){
-        int leftValue = Integer.parseInt((String) leftButton.getText());
-        int rightValue = Integer.parseInt((String) rightButton.getText());
-        if(view == leftButton){
-            if(leftValue > rightValue){
-                point ++;
-                Toast.makeText(getApplicationContext(),"you rock!!!!", Toast.LENGTH_SHORT).show();
-            }else{
-                point --;
-                Toast.makeText(getApplicationContext(),"suck it" , Toast.LENGTH_SHORT).show();
-            }
-
-
-        }
-
-        if(view == rightButton) {
-            if (rightValue > leftValue) {
-                point++;
-                Toast.makeText(getApplicationContext(), "you rock!!!!", Toast.LENGTH_SHORT).show();
-            } else {
-                point--;
-                Toast.makeText(getApplicationContext(), "suck it", Toast.LENGTH_SHORT).show();
-            }
-        }
-        pointText.setText("Points:" + point);
-        generateRandomNumber();
-
-    }
-
-    public void generateRandomNumber(){
-
-
-        leftButton.setText(Integer.toString(rand.nextInt(100)));
-        rightButton.setText(Integer.toString(rand.nextInt(100)));
-
-    }
-}
-
-```
-
-the new version of android make the id to be magical name appear for you 
-
 
 
 
@@ -254,9 +148,6 @@ how does the prorgammer specify where each component appears, how big each compo
 
 
 
-
-
-
 ## ViewGroup as layout
 
 ViewGroup superclass represents containers of views. 
@@ -293,17 +184,25 @@ Widgets can be added to a ViewGroup , which will then manage that widget's posit
 
 ## XML, in brief
 XML: a language for describing hierarchical text data. a data markup language
-<ol>
+ 
 uses tags that consists of elements and attributes. tags can be nested
 
  some tags are opened and closed; others self-closed
-</ol>
+ it is more of a system of describing data that is hierachical -- things are stored inside other things. it is up to you 
+HTML is an instantiation of xmo, it is like a usage of xml with a certain est of implied meaning 
+
+you write a tag, inside each tag has an element. you want to generally know how it works 
+
+
+it is for a good mnemonic device 
+
 
 ```xml
-<elment attr="value" attr="value"> <element>
+<element attr="value" attr="value"> <element>
 
-<elment attr="value" attr="value" /> 
+<element attr="value" attr="value" /> 
 ```
+it is just mumbo jumbo 
 
 
 
@@ -313,7 +212,10 @@ change open/close tags to new layout type. LinearLayout
 now go back to Design view and add widgets 
 
 
-there are different strategies to do layouts 
+there are different strategies to do layouts. make sense? 
+
+as we just dive into XML stuff, why not just drag and drop spriny widgets in the visual editor? the visual editor cannot do everything there is certain stuff you might have to drop into the code to set. you may use shitty editor, you may need to know that to get along in a code base that sort of allude to, visual edtiors are really crappy for 30 yrs, everyday is like new drama. But you can see the connection between these two 
+
 
 
 
@@ -323,12 +225,70 @@ orientation of horizontal or vertical
 items do not wrap if they reach edge of screen 
 
 
+there are different stragetegies for laying out widgets, one is called linearly layout. lineary layout arranges widgetes in a single row or single column just in a line horizontal or vertical line 
+when it is just off screen, it cut off the screen and you cannot see it anymore 
+
 
 LineaLayout inherits from ViewGroup, which, as we said earlier, is a subclass of View that contains and araranges other views. You use a LinearLayout when you want views arranged in a single column or row. Other ViewGroup subclasses that you will meet later include ConstraintLayout and FrameLayout 
 
 When a view is contained by a ViewGroup, that view is said to be a child of the ViewGroup. the root LinearLayout has two children; a TextView and another LinearLayout. thie child LinearLayout has children of its own 
+it is nice to see it out of its comfort zone 
 
 
+by changing that default constraint layout 
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        > </Button>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        ></Button>
+
+</LinearLayout>
+
+```
+
+you can say android:orientation="vertical" 
+somtimes you want this because this easily describes what you want 
+
+
+```xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        > </Button>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        ></Button>
+
+</LinearLayout>
+
+```
 
 ```xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -422,9 +382,68 @@ we will use .. when omitting boilerplate code is autogenerated by android studio
 
 ```
 
+you can insert the <LinearyLayout> inside another LinearLayout 
+
+```xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        > </Button>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        ></Button>
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World!"
+            > </Button>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World!"
+            ></Button>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+```
+
+so you can sort of nest these things and stuff and so that is kinda cool, it is a little weired it is called a compoiste or nested layout 
+
+
+
+
+
 
 ## Gravity
 gravity: alignment direction that widgets are pulled 
+you can use these properties on these different widgets to affect how they look and how will they appear 
+
+so gravity pulls to left|right|center of the screen 
+
+
+
+
 
 1 top bottom, left, right , center 
 2 combine muple with | 
@@ -456,11 +475,66 @@ gravity: alignment direction that widgets are pulled
 </LinearLayout>
 ```
 
+this is basically for alignment because calling it alignment would be too hard 
+everyone goes to the center now 
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:gravity="center">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        > </Button>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        ></Button>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World!"
+            > </Button>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello World!"
+            ></Button>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+```
+
 
 ## Weight 
 weight: relative element sizes by integers 
 1 widget with weigth K gets K/total fraction of total size 
 2 cooking analogy 
+
+weight is a strentching function if you want your widget looking size like normal size. one way is you can specify proportions you can say first button has weight 1 and this one has weight 3 
+I guess xx percent space to the first element .... 
+
+the actual numbers you put do not matter it could have been xxx
+
+
+
 
 
 ```xml 
@@ -514,20 +588,20 @@ weight: relative element sizes by integers
 ```
 
 
-android studio has a nice autocompletiion suggesting the things 
+typically android studio has a nice autocompletion suggesting the things 
 that is weight for sizing and stretching 
 
 
 ## Widget Box Model 
 
 
-content: size of widget itself 
+*content*: size of widget itself 
 
-padding : artificial increase to widget size outside of contente 
+*padding* : artificial increase to widget size outside of contente 
 
-border: outside padding, a line around edge of widget 
+*border*: outside padding, a line around edge of widget 
 
-margin: invisible separation from neighbouring widgets 
+*margin*: invisible separation from neighbouring widgets 
 
 
 
@@ -561,8 +635,14 @@ dp = device pixels
 dip - device indepdent pixels 
 sp = scaling pixels 
 
-fit its stuf to fit its content all the way down and around 
+fit its stuff to fit its content all the way down and around 
 that is the dimension of the linear layout 
+
+different screen size different front you sort do not want to do that. the less you use these specific units the better 
+
+use match_parent that means use the same values as the things I am contained inside of 
+
+
 
 
 how to mush over the right edge of the screen 
@@ -638,60 +718,73 @@ each widget placed into next available row/column unless given a layout_row and 
 it is identical to linear layout except it has rows and colums so instead of just one line vertically or horizontally 
 
 ```xml
-<?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<GridLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:rowCount="2"
-    android:columnCount="2"
-    tools:context=".MainActivity"
-    android:orientation="vertical"
-    >
-
-
-
-    <Button
-
-        android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:rowCount="3"
+    android:columnCount="3">
+    <Button android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-
-
-        />
-
-    <Button
-
-        android:layout_width="wrap_content"
+        android:text="11"
+        android:background="@color/cardview_shadow_start_color">
+    </Button>
+    <Button android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-
-
-        />
-    <Button
-
-        android:layout_width="wrap_content"
+        android:text="11"
+        android:background="@color/cardview_shadow_start_color">
+    </Button>
+    <Button android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-
-        />
-
-    <Button
-
-        android:layout_width="wrap_content"
+        android:text="11"
+        android:background="@color/cardview_shadow_start_color">
+    </Button>
+    <Button android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-      
+        android:text="11"
+        android:background="@color/cardview_shadow_start_color">
+    </Button>
+    <Button android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11"
+        android:background="@color/cardview_shadow_start_color">
+    </Button>
+    <Button android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11"
+        android:background="@color/cardview_shadow_start_color">
+    </Button>
+    <Button android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11"
+        android:background="@color/cardview_shadow_start_color">
+    </Button>
+    <Button android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11"
+        android:background="@color/cardview_shadow_start_color">
+    </Button>
+    <Button android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11"
+        android:background="@color/cardview_shadow_start_color">
+    </Button>
+    <Button android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11"
+        android:background="@color/cardview_shadow_start_color">
+    </Button>
 
-        />
-
-
-
-
-</LinearLayout>
+</GridLayout>
 
 ```
+if we change match_parent to wrap_content, the inner container shrank to that big 
+
+you can play with it yourself 
+
+
+like what you said, it is the overall outermost layout of this screen 
+
 
 
 ## TableLayout
@@ -779,6 +872,9 @@ useful to produce more complicated apperance
 default layout; tightly integrated with android studio visual designer 
 widget's corners are connected to other widgets or screen edges 
 
+
+
+
 every view must have at least two constraints : one horizontal and one vertical 
 
 stretchy, springy. Android felt like the editor was clunky and part of the reason the layout did not every well match the dragging and dropping that the person was doing 
@@ -786,13 +882,35 @@ stretchy, springy. Android felt like the editor was clunky and part of the reaso
 it is the mostly officially recommended layout nowadays 
 
 
+you when you the strethcy springy things when you first load up android studio. it is kinda newish 
+the visual editor is clunky and part of the reason they felt was that layout was dragging and dropping 
+
+it is kinda the mostly officially recommended layout nowadays 
+
+
+
+
+
 
 ## ConstraintLayout anchor points
+
+constraint layout is based on the idea that you anchor corners or edges of widgets, it has a vertical attribute called the baseline which is like if there is any content or text inside what is sort of bottom of that cotent, it has springs pulling at the from each end basically 
+
+
+there is kinda alias to the edge which is sometimes referred to as  the start edge 
+the reason of that is there is a lot of language read from right to left 
+
+
+
+
+
 attach sides of one widget to sides of another or parent 
 it is easier to fiddle around here 
 
 ```xml 
+
 app:layout_constraintSide_toSide="@+id/id"
+
 ```
 Horizontal sides: left, right can substitute Start/End for Left/Right to work better than RTL languges. mostly from left to right , top to bottom 
 
@@ -813,6 +931,11 @@ ConstraintLayout requires every widget has to have its vertical and horizontal a
 if it has a red line, it says this view has not been constrained, you have to anchor it otherwise it won't compile and it won't run. you have to drag and drop let go 
 
 
+if you set a widget width to match_parent, why do you still need to attach it to the edges of the scree, because the constraint layout requires every widget has to have its vertical edge attached to something and its horizontal edge attached to something 
+
+
+
+
 
 
 
@@ -825,10 +948,10 @@ the anrdoid:layout_width and android:layout_height attribtues are required for a
 they are typically set to either match_parent or wrap_content 
 
 
-match_parent view will be as big as its parent</li>
+match_parent view will be as big as its parent 
 
 
-wrap_content view will be as big as its contents require</li>
+wrap_content view will be as big as its contents require 
 
 
 
