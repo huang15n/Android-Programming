@@ -3,8 +3,106 @@
 # GUI Widgets and Lists 
 
 
+57:40 
 
 
+## Cheatsheet 
+the widgets you use the most 
+```xml
+<Button> </Button>
+<CheckBox> </CheckBox>
+<EditText></EditText>
+<RadioButton> </RadioButton>
+<TextView> </TextView>
+<Switch> </Swtich>
+
+<ScrollView>
+<TextView> </TextView>
+ </ScrollView> <!-- with long text in text view -->
+
+
+ <ImageView>
+
+ <ImageButton> </ImageButton>
+ <!-- same as image view expect it is technically also clickable-->
+
+
+<!-- radio group is more of a container over , indenting them to indicate they are inside of the groups 
+-->
+<RadioGroup
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"> </RadioGroup>
+
+
+
+android:clickable = "bool"   <!--it will grey out if sets to false -->
+android:id="@+id"
+android:onClick = "function"
+android:text = "text"
+
+
+<!--EditText only -->
+
+android:inputType = "type"
+android:lines = "int"
+android:maxLines = "int"
+android:textSize = "size"
+
+<!--EditText only -->
+
+<!-- ImageView only -->
+android:contentDescription = "string"
+android:tag = "string"
+android:scaleType = "type"
+android:src = "@drawable/"
+<!-- ImageView only -->
+
+
+<!-- CheckBox only -->
+android:checked="bool"
+<!-- CheckBox only -->
+
+
+<!-- Switch only -->
+android:textOn = "text"
+android:textOn = "off"
+android:showText="bool"
+
+<!-- Switch only -->
+
+```
+
+
+```java
+view.getResourceId();
+view.getResourceName();
+
+```
+there are different you can talk to widget, you can just refer to the id of the widget as if it was a variable and the code will understand that it is also a concept called data binding or widget binding 
+you can go through the properties, break you out of the mindset presumbly that is everything you should know. you should rely on the editor to help you with attributes do not get overwhelmed, set you the expectations for what you should do or what you should not need to know 
+
+find you way through if you just have little bit of instinct about it 
+
+find your way through projects 
+
+./build means that when it compiles a project it puts the output of binaries 
+./graldes are the stuff like makefiles notes for how to compile 
+./app/src/main/res/drawable is where you need to go to put images 
+
+
+
+XML is the intial state when it first loads up. It is a little opque until you go play with it for a few mins once you have done one little app in it you sorta get the hang of that widget 
+
+
+
+
+
+
+
+
+
+## Widgets Fundamentals 
 
 
 
@@ -33,11 +131,12 @@ there is a whole bunch of widgets
 </ol>
 
 
-the idea here is not to cover it comprehensive, we have a taste and move, we do not cover stuff in exhaustive detail that can be unsatisfying sometimes
+the idea here is not to cover it comprehensive, we have a taste and move on, we do not cover stuff in exhaustive detail that can be unsatisfying sometimes
 
-it is really a good time to get cracking on that. sorry that is the last minute . we put up the options 
+it is really a good time to get cracking on that. sorry that is the last minute . we put up the options. I am gonna walk through several things with you 
 
-you can use a WebView and it pops up the link you can look at it but you are still in the app 
+you can use a WebView and it pops up the link you can look at it but you are still in the app. that uses the guts of chrome or whatever browser that comes with your device 
+
 
 
 we will see a lot of apps using MapView 
@@ -45,7 +144,27 @@ we will see a lot of apps using MapView
 
 
 ##  Adding a widget 
+
+when you add widgets, you have two different ways one is thta you add some xml to the file that is describing the activities for the widget to appear 
+
+sometimes you could do all of that in java/kotlin, but normally you want to do XML because it is cleaner and simpler and easier. could you think of some situation where you want to use java/kotlin to do that? like in response to an event and want a new widget or we hid widgets and I will make it appear 
+
+you could extend an existing widget you could write your own widget 
+or you want to do something at runtime involving the widgets that is rare and unpected . you have to create useres on the fly 
+
+in general, you delcare the widge you create it and set a lot of its initial state in xml 
+
+
+
+
+
+
+
+
+
 to put a widget you must do two things
+
+
 
 <ol>
 
@@ -198,9 +317,12 @@ in scrollview you will have to add a lot of different properties to it
 
 ## EditText
 
-<em> in the design mode, it does not say EditText, it only says PlainText, that is what you want 
+ in the design mode, it does not say EditText, it only says PlainText, that is what you want 
 
-the old way is you put a label there, but like new hotness is that you put the little label of what you want in the xml to type, that is called a hint in android</em>
+the old way is you put a label there, but like new hotness is that you put the little label of what you want in the xml to type, that is called a hint in android
+
+
+
 <table>
 
 
@@ -353,7 +475,7 @@ iv.setImageResource(R.drawable.filename);
 <em> I will walk you through the steps in a second, you have to get some images files to put them in your project. it is gonna make your way to be a bit difficult to find through them  </em> 
 
 
-<strong> there is folder called build, it means when you compile a project, it puts the output of binaries ,app is the actual code you write for you app, gradle is some sort of like makefile stuff note how to prepare and how to build how to compile an app </strong>
+<strong> there is folder called build, it means when you compile a project, it puts the output of binaries ,app is the actual code you write for you app, gradle is some sort of like makefile stuff note how to prepare and how to build how to compile an app, it is stretched to fit  </strong>
 
 
 <h3> ImageButton</h3>
@@ -523,11 +645,49 @@ an individual toggleable boolean on/off swtich
 
 
 ```xml
+
+    <Switch android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textOn="on"
+             android:textOff="off"
+            android:id="@+id/switcher"
+           />
+
+
+```
+
+```java
+
 Switch sw = findViewById(R.id.id);
 if(sw.checked){
    .... 
 }
 
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                
+            }
+        });
+    }
+
+
+
+
+   sw = findViewById(R.id.switcher);
+
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+               if(isChecked) {
+                   Toast.makeText(getApplicationContext(), "this is checked", Toast.LENGTH_SHORT).show();
+               }
+            else{
+                Toast.makeText(getApplicationContext(), "this is checked", Toast.LENGTH_SHORT).show();
+
+            }
+            }
+        });
 ```
 <em> it is using apps have these check box which have different looks to it </em>
 

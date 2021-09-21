@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">quizGame</string>
+    <string name="question_one">Are you dumb?</string>
+    <string name="question_two">Are you smart?</string>
+    <string name="question_three">Are you pretty?</string>
+    <string name="question_four">Are you ugly?</string>
+    <string name="true_button">true</string>
+    <string name="false_button">false</string>
+    <string name="trueToast">you rock it!</string>
+    <string name="falseToast">you suck!</string>
+    <string name="next">Next</string>
+    <string name="toast_true">Left button clicked</string>
+    <string name="toast_false">right button clicked</string>
+    <string name="hello">hello</string>
+</resources>
