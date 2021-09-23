@@ -3,7 +3,7 @@
 # GUI Widgets and Lists 
 
 
-57:40 
+ 
 
 
 ## Cheatsheet 
@@ -32,8 +32,40 @@ the widgets you use the most
 <RadioGroup
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:orientation="horizontal"> </RadioGroup>
+            android:orientation="horizontal"> 
+            
+            <RadioButton> </RadioButton>
+            <RadioButton> </RadioButton>
+            </RadioGroup>
 
+
+
+
+
+<!--static list-->
+<resources>
+<string name = "name"> value </string>
+<string-array name = "name">
+<item>value </item>
+<item>value </item>
+<item>value </item>
+
+</string-array>
+<resources>
+
+  <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:entries="@array/xxx" />
+
+<!-- listview clicking do not use onCick -->
+
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/characters"/>
 
 
 android:clickable = "bool"   <!--it will grey out if sets to false -->
@@ -77,6 +109,32 @@ android:showText="bool"
 ```java
 view.getResourceId();
 view.getResourceName();
+
+// static list view click event 
+lv = findViewById(R.id.listview);
+  lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(),position + "",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+// spinner item select event 
+
+
+ sp = findViewById(R.id.spinner);
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), position + ": clicked", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                
+
+            }
+        });
 
 ```
 there are different you can talk to widget, you can just refer to the id of the widget as if it was a variable and the code will understand that it is also a concept called data binding or widget binding 
@@ -1054,6 +1112,16 @@ public class MainActivity extends AppCompatActivity {
 <i> a visible vertical meanu of selectable choices</i>
 
  lists are more complicated , we separate it out
+ it is a usually vertical collection of choices a person can either look at or click on or something like that 
+it is hard to specify what kind of choices are 
+
+
+
+
+
+
+
+
 
 <h3> ListView</h3> 
 <em> an ordered collection of selectable choices </em>
@@ -1160,6 +1228,9 @@ refer to them in java code: as a resource ID: R.string.name, R.array.name
 ```
 
  that will update itself to show that, it is a bit dumb , another good thing about list is you can interact with it. there is a view called recyclerview that some apps want to use , there is a ton of these in the wild like most apps that shows lists of stuff are using this, this is crappier, come out and look up,  this constantly fools me . you are paying attention you have learned some stuff about android already, 
+
+there are still a ton in the wild 
+
 
 
 <h3> list adapter </h3>
@@ -1359,6 +1430,34 @@ spin.setOnItemSelectedListener{
         app:layout_constraintTop_toTopOf="parent" />
 
 
+
+```
+
+
+```xml 
+
+ <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+```
+
+
+
+```java
+ sp = findViewById(R.id.spinner);
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(), position + ": clicked", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                
+
+            }
+        });
 
 ```
 
