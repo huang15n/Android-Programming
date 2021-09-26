@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    android:rowCount="3"
+    tools:context=".MainActivity"
+    android:layout_gravity="center">
+
+
+    <ImageView
+        android:layout_width="426dp"
+        android:layout_height="365dp"
+        android:layout_columnSpan="2"
+        android:src="@drawable/turtle1"
+        android:id="@+id/turtle_image">
+
+    </ImageView>
+
+
+
+    <LinearLayout
+        android:layout_gravity="center">
+        <RadioGroup
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="turtle1"
+            android:id="@+id/turtle1"
+            android:onClick="swtichImage"
+            >
+
+
+        </RadioButton>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="turtle2"
+            android:id="@+id/turtle2"
+            android:onClick="swtichImage">
+
+
+        </RadioButton>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="turtle3"
+            android:id="@+id/turtle3"
+            android:onClick="swtichImage">
+
+
+        </RadioButton>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="turtle4"
+            android:id="@+id/turtle4"
+            android:onClick="swtichImage">
+
+
+        </RadioButton>
+        </RadioGroup>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout>
+
+
+
+
+</LinearLayout>
+
+    <LinearLayout>
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/characters"/>
+    </LinearLayout>
+
+</GridLayout>

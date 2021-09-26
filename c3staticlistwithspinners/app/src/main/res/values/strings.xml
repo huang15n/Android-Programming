@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">LayoutDemo</string>
+    <string-array name = "characters">
+        <item> Splinter </item>
+        <item> Shredder </item>
+        <item> Krang </item>
+        <item> Bebop </item>
+    </string-array>
+</resources>
