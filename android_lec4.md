@@ -4,6 +4,16 @@
 
 ## Cheat Sheet 
 
+
+one thing strange about the list is if you want to specify the items that are in the list, you have to say entries="@array/name" and array itself it is a string.xml that is something called static list where you know all the contents of the list ahead of time 
+```xml 
+<resources>
+<array-name name=""> <item> </item> <array-name>
+</resources>
+```
+
+
+
 ```xml
 
 
@@ -38,7 +48,9 @@
 
 
 ```java
- 
+// setOnItemClickListener
+// new AdapterView.OnItemClickListener
+
 // static list view click event 
 lv = findViewById(R.id.listview);
   lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -64,6 +76,33 @@ lv = findViewById(R.id.listview);
 
             }
         });
+
+```
+
+
+```java 
+// listview adapter 
+
+ArrayList<String> string = new ArrayList<>();
+
+
+lv = findViewById(R.id.listview);
+
+ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,string);
+
+lv.setAdapter(adapter);
+
+// adapter.notifyDataSetChanged();
+ lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mStrings.remove(position);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+
+
 
 ```
 
@@ -126,7 +165,7 @@ it is a little different if your list is dynamic or comes from some external pla
 ## String resources
 
 
-<strong> declare contant strings and arrays in res/values/string.xml : </strong>
+<strong> declare constant strings and arrays in res/values/string.xml : </strong>
 
 ```xml
 <resources> 
@@ -205,18 +244,21 @@ if you want to do a dynamic list, and I have to apologize on behalf of android b
 
 <strong> adapter:helps turn list data into lsit view items</strong>
 common adapters:
-1 ArrayAdapter: items come from an array or list 
-2 CursorAdapter: items come from a database query
+
+1. ArrayAdapter: items come from an array or list 
+2. CursorAdapter: items come from a database query
 
  syntax for creating an adapter 
 
-<i> ArrayAdapter name = ArrayAdapter<String>(activity,layout,array); </i>
+<i> ArrayAdapter<T> name = ArrayAdapter<T>(activity,layout,array); </i>
+
 
 
 you have to tell what data that you want o show in your list and then you have to give that adapter to your list as a property and then it will appear on the screen 
 
 
 
+it is what you think of as the data itself and the GUI visualization of that data 
 
 
 
@@ -241,7 +283,7 @@ you have to tell what data that you want o show in your list and then you have t
 
 <ol>
 <li> Lists do not use the onClick event</li>
-<li> event listenres must be attached in java, not XML </li>
+<li> event listeners must be attached in java, not XML </li>
 <li>you must use java annoymous inner class, lambda functions, a function with a name written inline between {} braces </li>
 <li> the lambda function will be called when events occur on the list </li>
 </ol>
@@ -502,17 +544,256 @@ you can use a set, or you can jump up the first element and you are done
 
 
 ```java
-
+int [] array = {1,2,3,4};
 ArrayList<Type> name = new ArrayList<>();
 name.add();
-name.shuffle();
-name.subList(); // slices the list out 
+ 
+name.subList(start, end); // slices the list out 
 
 for(type variable : name){
     
 }
 
+int num = num[0];
+String word = words.get(1);
+if(words.contains("Hello")){
+
+}
+
 ```
+
+
+The reason they are doing ArrayAdapter versus CursorAdapter is because there is different places that data can be coming from for your ListView it could be coming from just a file, you could be connecting to database or website 
+they provide different adapter thing for different sources that data came from 
+
+
+```java
+ArrayAdapter<T> name = ArrayAdapter<T>(activity, layout, array);
+
+```
+
+if we want to use array adapter, we have to tell it: 
+1. what activity is gonna use adapter 
+2. what layout were we going to use to draw the individual list the item on screen: R.layout.simple_list_item_1 
+3. get the array/arraylist you want to appear now 
+
+```java
+package com.example.dictionaryapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+
+    ListView lv;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        lv = findViewById(R.id.listview);
+        ArrayList defs = new ArrayList<String>();
+        defs.add("business magnate");
+        defs.add("industry designer");
+        defs.add("media proprietor");
+        defs.add("investor");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, defs);
+
+
+    }
+}
+
+```
+ 
+this does not cause anything to happen in the screen yet, we have to tell the list view to pull its data from that adapter 
+how do you feel about your life choices now? a long round trip 
+
+```java
+      ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, defs);
+        lv.setAdapter(adapter);
+
+
+```
+
+they all shuffled up, the whole point of this is to be dynamic, where is the dynamism 
+
+
+
+
+if you want to make changes, you are dealing with remove or add element from wherever, that is going to notifyDataChanged();
+the idea is that you call that method it is gona tell the ListView there was a change and then the ListView will redraw on the screen 
+
+why does not it redraw on the screen when we change the arraylist? 
+it is kinda hard for it to watch the ArraList and notice if it changes 
+anyways, you will have to do this 
+otherwise you won't be able to see the changes on the screen, a more realistic example is to have some sort of event hat caused a change to the ArrayList 
+
+let's make some changes when tapping on defintions 
+in the code, you need to say that you are gonna set a listener for clicking of items 
+
+
+
+
+List Event example 
+
+```java
+listView.setOnItemClickListener()
+
+```
+
+
+```java
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                
+            }
+        });
+
+```
+
+### Lambda function 
+a lambda is an anonymous function passed as a parameter, 
+
+
+
+when you tap on it, it changes the the content of the list so that we could see that change on the screen 
+kotlin allows you to get the widgets by their IDs as if those IDs were variables, android studio will suggest that autocompletion and it will wire up these extensions. it just makes these magical variables based on the ID that we gave the widget in XML file 
+the list cues from this adapter that is reading its data from, you do not want to talk to the adapter, you want to talk to the underlying widgets so it makes changes here 
+
+
+it has to be set outside the scope 
+ 
+
+now it wont change what is displayed on the screen, we have to use the adapter.notifyDataSetChanged(), you get almost everything right and you tap it and nothing happens and so, just give you another pair of eyes. For an ArrayAdapter, notifyDataSetChanged only works if you use the add(), insert(), remove(), and clear() on the Adapter.
+
+```java
+package com.example.dictionaryapp;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+
+    private ListView lv;
+    private ArrayList defs;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        lv = findViewById(R.id.listview);
+        defs = new ArrayList<String>();
+        defs.add("business magnate");
+        defs.add("industry designer");
+        defs.add("media proprietor");
+        defs.add("investor");
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, defs);
+        lv.setAdapter(adapter);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                 defs.remove(position);
+                 adapter.notifyDataSetChanged();
+            }
+        });
+
+        
+
+
+
+    }
+}
+
+```
+
+that is not objectively wrong, let's celebrate failures and crashes 
+
+
+
+## Stack Trace 
+
+there is a stack trace but it just does not pop up on the screen for you to see, it is intentional 
+we have figured out this very developre focused mindset 
+
+
+use Logcat and descriptive stack trace and hunt down 
+
+in this logcat tab, it prints out these messages from your app 
+the problem with this thing is it just spam dumps a bunch of messages in as you can get overwhelmed by all that stuff, you want to find things may came from your code like main activity 
+
+
+these private variables get initialized that the instant your activity gets constructed the object for your activity 
+after your activity gets constructed it runs this onCreate method that like actually lays out all the widgets on the screen and stuff like that. if you really have an eagle-eye spy that.
+
+
+we can declare the variable up there and set the value after the app has been created, until our app is created itself, that widget is not ready to talk in that way subtler 
+
+however, we are kind of tripping over some kotlin stuff now, it leads to a cascade of confusions here. Kotlin is a bit persnickety about null types. wnt to hear you articulate. null is an empty object that lacks an object, you do not necessarily have to put up with such a creature 
+if you call on a null object, the program crashes, you get a segmentation crash, it is not delightful. it is supposed to be backward compataible with java code Variable? if you do not say a type the type will be inferred or deduced from the code around 
+
+
+the nullness 
+
+```java
+String name = null;
+int length = name.length(); // crash at runtime 
+if(name != null){
+    int length = name.length(); // ok
+}
+
+
+```
+
+we write event handlers we took a prameter of type view if we leave a question mark it would never be negative. all the flaws here to say 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
