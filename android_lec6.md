@@ -47,6 +47,84 @@ we got the app in a point where you can read file and you can pick a random defi
 ```
 
 
+```java
+
+// simplistic version:
+
+// activity 1 
+package com.example.multipleintent;
+
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+   public static final int CODE = 123;
+
+   private TextView tv;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        tv = findViewById(R.id.textView);
+    }
+
+    public void newActivity(View view) {
+        Intent SecondActivity = new Intent(this, Activity2.class);
+        SecondActivity.putExtra("name", "this is from the first activity");
+        startActivityForResult(SecondActivity, CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == CODE){
+            tv.setText(data.getStringExtra("name"));
+        }
+    }
+}
+
+// activity 2 
+package com.example.multipleintent;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+
+public class Activity2 extends AppCompatActivity {
+    EditText et;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_2);
+        et = findViewById(R.id.editView);
+
+
+    }
+
+    public void addContent(View view) {
+
+        Intent myIntent = new Intent();
+        myIntent.putExtra("name", et.getText().toString());
+        setResult(RESULT_OK,myIntent);
+        finish();
+
+    }
+}
+
+```
+
+
 ## Multiple activities 
 1. many apps have multiple activities 
 example: address book apps, main activity = contact list; clicking a contact goes to another activity for viewing details 
@@ -837,7 +915,7 @@ I think the best code to write htis in editor , from a blank white space to star
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+        // delete super.onActivityResult(requestCode, resultCode, data);
     }
 
 ```
