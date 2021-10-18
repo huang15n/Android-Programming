@@ -11,117 +11,242 @@ we got the app in a point where you can read file and you can pick a random defi
 
 ## cheat sheat 
 
-```java 
-// main activity:
+activity1 
 
- private final static int STUPID_CODE= 123;
+```java
+package com.example.intentexampel;
 
-  public void addWordFunction(View view) {
-        Intent myIntent = new Intent(this, add_word.class);
-        startActivityForResult(myIntent, STUPID_CODE);
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-    }
+import org.w3c.dom.Text;
+
+public class MainActivity extends AppCompatActivity {
+
+   TextView tv;
+   Button butt1;
+
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode == STUPID_CODE){
-            String word = data.getStringExtra("word");
-            String definition = data.getStringExtra("definition");
-            mHashMap.put(word,definition);
-            keys.add(word);
-            defs.add(definition);
-            adapter.notifyDataSetChanged();
-        }
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        tv = findViewById(R.id.tv1);
+        butt1 = findViewById(R.id.butt1);
+
+        butt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Activity2.class);
+                startActivity(intent);
+
+            }
+        });
+
+
+
+
+
+
+
     }
 
 
-// the other activity
-        Intent myIntent = new Intent();
-        myIntent.putExtra("word",wordVariable);
-        myIntent.putExtra("definition",definitionVariable);
-        setResult(RESULT_OK, myIntent);
-        finish();
 
+
+
+}
 
 ```
 
+activity 2 
 
 ```java
 
-// simplistic version:
 
-// activity 1 
-package com.example.multipleintent;
+package com.example.intentexampel;
 
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
-
-   public static final int CODE = 123;
-
-   private TextView tv;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        tv = findViewById(R.id.textView);
-    }
-
-    public void newActivity(View view) {
-        Intent SecondActivity = new Intent(this, Activity2.class);
-        SecondActivity.putExtra("name", "this is from the first activity");
-        startActivityForResult(SecondActivity, CODE);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == CODE){
-            tv.setText(data.getStringExtra("name"));
-        }
-    }
-}
-
-// activity 2 
-package com.example.multipleintent;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
+import org.w3c.dom.Text;
 
 public class Activity2 extends AppCompatActivity {
-    EditText et;
+
+    Button butt2;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_2);
-        et = findViewById(R.id.editView);
+
+        butt2 = findViewById(R.id.butt2);
+
+        butt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent = new Intent();
+               setResult(RESULT_OK, intent);
+               finish();
+            }
+        });
+
+
+
 
 
     }
 
-    public void addContent(View view) {
 
-        Intent myIntent = new Intent();
-        myIntent.putExtra("name", et.getText().toString());
-        setResult(RESULT_OK,myIntent);
-        finish();
+}
+```
+
+
+pass value 
+main activity 
+```java
+package com.example.intentexampel;
+
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+public class MainActivity extends AppCompatActivity {
+
+   TextView tv;
+   Button butt1;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        tv = findViewById(R.id.tv1);
+        butt1 = findViewById(R.id.butt1);
+        tv.setText(getIntent().getStringExtra("fromA2"));
+
+
+
+        butt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Activity2.class);
+                intent.putExtra("fromA1", "this is from A1");
+                startActivity(intent);
+
+
+            }
+        });
+
+
+
+
+
+
 
     }
+
+
+
+
+
 }
 
+
+```
+
+activity2 
+
+```java
+package com.example.intentexampel;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+public class Activity2 extends AppCompatActivity {
+
+    Button butt2;
+    TextView tv2;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_2);
+
+        butt2 = findViewById(R.id.butt2);
+        tv2 = findViewById(R.id.tv2);
+
+        tv2.setText(getIntent().getStringExtra("fromA1"));
+
+        butt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+               intent.putExtra("fromA2","this is from activity 2");
+               startActivity(intent);
+
+            }
+        });
+
+
+
+
+
+
+
+    }
+
+
+}
 ```
 
 
@@ -1212,6 +1337,191 @@ you can pass through the file name for sure there is definitely more than way to
 
 I just want to point out that there is not a lot of left to patch up before this basically works 
 
+
+
+#### obselete parts:
+
+a easy way to interact with main intent 
+
+```java
+  Intent intent = getIntent();
+        String message = intent.getStringExtra("fromActivity1");
+        tv2.setText(message);
+
+
+```
+
+two main points 
+
+```java
+int CODE = 123;
+// activity 1 
+Intent activity2 = new Intent(this, Activity2.class);
+activity2.putStringExtra("name1","value1");
+startActivityForResult(activity2,CODE);
+
+protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+         if(requestCode == STUPID_CODE){
+        // your statement 
+         }
+       }
+
+// activity 2 
+
+Intent activity1 = new Intent();
+activity1.setResult(RESULT_OK, activity1);
+finish();
+
+```
+
+
+
+```java 
+// main activity:
+
+ private final static int STUPID_CODE= 123;
+
+  public void addWordFunction(View view) {
+        Intent myIntent = new Intent(this, add_word.class);
+        startActivityForResult(myIntent, STUPID_CODE);
+
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == STUPID_CODE){
+            String word = data.getStringExtra("word");
+            String definition = data.getStringExtra("definition");
+            mHashMap.put(word,definition);
+            keys.add(word);
+            defs.add(definition);
+            adapter.notifyDataSetChanged();
+        }
+    }
+
+
+// the other activity
+        Intent myIntent = new Intent();
+        myIntent.putExtra("word",wordVariable);
+        myIntent.putExtra("definition",definitionVariable);
+        setResult(RESULT_OK, myIntent);
+        finish();
+
+
+```
+
+
+```java
+
+// simplistic version:
+
+// activity 1 
+package com.example.multipleintent;
+
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+   public static final int CODE = 123;
+
+   private TextView tv;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        tv = findViewById(R.id.textView);
+    }
+
+    public void newActivity(View view) {
+        Intent SecondActivity = new Intent(this, Activity2.class);
+        SecondActivity.putExtra("name", "this is from the first activity");
+        startActivityForResult(SecondActivity, CODE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == CODE){
+            tv.setText(data.getStringExtra("name"));
+        }
+    }
+}
+
+// activity 2 
+package com.example.multipleintent;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+
+public class Activity2 extends AppCompatActivity {
+    EditText et;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_2);
+        et = findViewById(R.id.editView);
+
+
+    }
+
+    public void addContent(View view) {
+
+        Intent myIntent = new Intent();
+        myIntent.putExtra("name", et.getText().toString());
+        setResult(RESULT_OK,myIntent);
+        finish();
+
+    }
+}
+
+```
+
+
+##### remember, if you have a  startActivityForResult on both activity, the variables won't work 
+
+```java 
+///activity 1 
+public void toActivity2(View view) {
+        Intent secondActivity = new Intent(this, Activity2.class );
+        secondActivity.putExtra("activity1Variable","this is from activity One");
+        startActivityForResult(secondActivity,STUPID_CODE);
+
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == STUPID_CODE){
+            TextView tv = findViewById(R.id.tv1);
+            tv.setText(data.getStringExtra("activity2Variable"));
+        }
+    }
+
+/// activity 2 
+ public void onClick(View v) {
+
+                Intent firstActivity = new Intent(getApplicationContext(), MainActivity.class);
+                firstActivity.putExtra("activity2Variable", "you see me here and I am from the secondary");
+                setResult(RESULT_OK,firstActivity);
+                finish();
+                startActivityForResult(firstActivity, STUPID_CODE);
+
+
+            }
+```
 
 
 
