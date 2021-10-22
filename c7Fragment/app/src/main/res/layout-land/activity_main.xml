@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+
+
+    android:orientation="horizontal"
+    android:layout_gravity="center">
+
+    <fragment android:layout_width="match_parent" android:layout_height="wrap_content"
+
+        android:id="@+id/fragment_good"
+        android:name="com.example.dictionaryactivitylifecycle.good"
+        tools:layout="@layout/fragment_good"
+        >
+
+
+
+    </fragment>
+
+
+    <fragment android:layout_width="match_parent" android:layout_height="match_parent"
+        android:id="@+id/fragment_bad"
+        android:name="com.example.dictionaryactivitylifecycle.bad"
+        tools:layout="@layout/fragment_bad"
+
+        ></fragment>
+
+
+
+
+    <!-- android:entries="@array/dictionary" -->
+
+
+
+</TableLayout>
